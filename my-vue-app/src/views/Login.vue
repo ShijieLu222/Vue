@@ -1,36 +1,31 @@
 <template>
-    <div style="max-width: 300px;margin: 40px auto;">
-        <p>请输入用户名和密码进行登录。</p>
-        <a-form>
-            <a-form-item>
-                <a-input v-model:value="formState.username" placeholder="用户名"></a-input>
-            </a-form-item>
-            <a-form-item>
-                <a-input-password v-model:value="formState.password" placeholder="密码" />
-            </a-form-item>
-            <a-form-item>
-                <a-button type="primary" html-type="submit" block @click="onFinish">登录</a-button>
-            </a-form-item>
-        </a-form>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>场地管理系统</h1>
+            <LoginForm />
+        </div>
     </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import { useRouter } from 'vue-router'; // 1. 引入 useRouter
-
-const router = useRouter(); // 2. 获取 router 实例
-
-const formState = reactive({
-    username: '',
-    password: '',
-});
-
-const onFinish =()=>{
-    router.push('/dashboard')
-};
+import LoginForm from '../components/LoginForm.vue';
 </script>
 
 <style scoped>
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6fa;
+}
 
+.login-card {
+    background: #fff;
+    padding: 24px 20px 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(5, 87, 195, 0.929);
+    min-width: 350px;
+    border: 1px solid #e4e7ed;
+}
 </style>

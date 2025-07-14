@@ -1,48 +1,53 @@
-# 企业级 Vue3 管理系统项目结构说明
+# 学习进度
 
-本项目采用 Vue3 + Pinia + vue-router，适合企业级管理系统开发。
+目前仅涉及前端页面设计和语法使用，未涉及状态管理（如 Pinia、Vuex）等内容。
 
-## 目录结构
+# 场地管理系统前端学习进度
 
-```
-src/
-├── api/           # 统一管理接口请求
-│   └── index.js
-├── assets/        # 静态资源（图片、样式等）
-├── components/    # 公共组件
-├── router/        # 路由配置（已初始化）
-│   └── index.js
-├── store/         # Pinia 状态管理（已初始化）
-│   └── index.js
-├── utils/         # 工具函数
-│   └── README.md
-├── views/         # 页面级组件
-│   └── README.md
-├── App.vue        # 根组件
-└── main.js        # 项目入口，已注册 Pinia 和 vue-router
-```
+## 1. Vue 单文件组件结构
+- 使用 `<template>`, `<script setup>`, `<style scoped>` 组织页面。
+- 组件数据用 `reactive` 创建响应式对象。
 
-## 说明
-- `api/`：统一管理所有与后端交互的接口请求。
-- `assets/`：存放图片、全局样式等静态资源。
-- `components/`：存放可复用的公共组件。
-- `router/`：项目的路由配置，集中管理页面跳转。
-- `store/`：Pinia 状态管理，集中管理全局状态。
-- `utils/`：存放工具函数，便于全局调用。
-- `views/`：页面级组件，每个页面一个文件或文件夹。
-- `App.vue`：项目的根组件。
-- `main.js`：项目入口文件，初始化并挂载 Vue 应用。
+## 2. 路由配置
+- 使用 `vue-router` 实现页面跳转。
+- 在 `src/router/index.js` 配置路由：
+  - `/login` 登录页
+  - `/register` 注册页
+  - `/dashboard` 主页面
+- 默认访问 `/` 自动重定向到 `/login`
+- 在 `App.vue` 里用 `<router-view />` 显示当前路由页面。
 
-## 快速开始
-1. 安装依赖：`npm install`
-2. 启动项目：`npm run dev`
-3. 访问本地地址（如 http://localhost:5173）
+## 3. Ant Design Vue 表单与组件
+- 安装并全局引入 Ant Design Vue。
+- 使用 `<a-form>`, `<a-form-item>`, `<a-input>`, `<a-input-password>`, `<a-button>` 等组件快速搭建表单。
+- 通过 `v-model:value` 实现输入框与数据的双向绑定。
 
-## 推荐开发流程
-1. 在 `views/` 里新建页面（如场地管理页面）。
-2. 在 `components/` 里新建可复用组件。
-3. 在 `api/` 里统一管理接口请求。
-4. 在 `store/` 里管理全局状态。
-5. 在 `router/` 里配置页面路由。
+## 4. 表单校验与事件
+- 在 `<a-form-item>` 上用 `:rules` 添加必填、长度等校验规则。
+- 用 `@finish` 事件处理表单提交，校验通过后跳转页面。
+- 例：密码不少于6位
 
-如需进一步帮助，请随时联系开发助手！
+## 5. 页面跳转
+- 使用 `useRouter` 获取路由实例，在方法中用 `router.push('/dashboard')` 跳转页面。
+
+## 6. 样式美化
+- 使用 flex 布局让表单居中：`display: flex; align-items: center; justify-content: center; min-height: 100vh;`
+- 用卡片样式（白色背景、圆角、阴影、边框）包裹表单。
+- 通过 `label-col` 和 `wrapper-col` 控制 label 和输入框的对齐比例。
+- 按钮宽度、对齐方式可通过 class 或 style 单独控制。
+- 可用深度选择器 `:deep()` 单独调整 label 位置。
+
+## 7. 进度总结
+- 已完成：
+  - 登录、注册、主页面的基本结构和路由
+  - 登录页表单的美化、校验、跳转
+  - Ant Design Vue 基础用法
+  - 页面整体布局与样式调整
+- 未涉及：
+  - 状态管理（如 Pinia、Vuex）
+  - 后端接口对接
+  - 复杂交互与数据流
+
+---
+
+如需继续学习注册页、dashboard 设计、表单校验、页面跳转等内容，可在此基础上扩展。
