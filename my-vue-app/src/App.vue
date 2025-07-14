@@ -7,7 +7,7 @@ export default {
 <template>
   <div id="app">
     <h1>场地管理系统</h1>
-    <!-- 这里将来会放路由和页面内容 -->
+    <router-view />
   </div>
 </template>
 
